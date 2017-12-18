@@ -44,9 +44,9 @@ td {
     white-space: nowrap;
     color: #000000;
     border-right: 1px dotted #EBEBED;
-    vertical-align: top;
+    /*vertical-align: top;*/
     height: 20px;
-    font-size:  0.8em;
+    font-size:  0.9em;
 }
 
 tbody>tr:hover{

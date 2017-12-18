@@ -2,6 +2,12 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
+const baseNetAppPath = path.join(__dirname, '\\src\\QuickStart.Core\\bin\\Debug\\netcoreapp2.0');
+
+process.env.EDGE_USE_CORECLR = 1;
+process.env.EDGE_APP_ROOT = baseNetAppPath;
+
+var edge = require('electron-edge-js');
 // Module to control application life.
 const app = electron.app;
 // Module to create native browser window.
@@ -11,6 +17,17 @@ const BrowserWindow = electron.BrowserWindow;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
+
+var getAppDomainDirectory = edge.func({
+  assemblyFile: path.join(baseNetAppPath, 'QuickStart.Core.dll'),
+  typeName: 'QuickStart.Core.LocalMethods',
+  methodName: 'GetAppDomainDirectory'
+});
+getAppDomainDirectory('', function(error, result) {
+  if (error) 
+    throw error;
+  console.log(result);
+});
 
 function createWindow () {
   // Create the browser window.

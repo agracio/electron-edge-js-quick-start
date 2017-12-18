@@ -1,0 +1,6 @@
+.idea/workspace.xml
+node_modules/
+.vs/
+bin/
+obj/
+package-lock.json

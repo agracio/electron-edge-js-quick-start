@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
-namespace QuickStart.Core
+namespace QuickStart.Standard
 {
     public class LocalMethods
     {
@@ -17,7 +19,7 @@ namespace QuickStart.Core
 
         public async Task<object> UseDynamicInput(dynamic input)
         {
-            return $".NET Core welcomes {input}";
+            return $".NET Standard welcomes {input}";
         }
     }
 }

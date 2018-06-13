@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using ExternalLibrary;
 using Newtonsoft.Json;
 
@@ -9,7 +6,7 @@ namespace QuickStart.Core
 {
     class ExternalMethods
     {
-        private Library _library = new Library();
+        private readonly Library _library = new Library();
 
         public async Task<object> GetPersonInfo(dynamic input)
         {

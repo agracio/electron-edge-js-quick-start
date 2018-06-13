@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+        <script>
+            var version = location.search.split('version=')[1];
+            version = version.charAt(0).toUpperCase() + version.substr(1)
+            var namespace = 'QuickStart.' + version + '.dll';
+        </script>
     <meta charset="UTF-8">
     <title>electron-edge-js Quick Start</title>
     <script>
@@ -9,51 +14,62 @@
       <link rel="stylesheet" href="default.css">
   </head>
   <body>
-    <h3 id="test">Quick start for electron-edge-js module using .NET Core</h3>
+    <h3 id="test">
+        Quick start for electron-edge-js module using .NET 
+        <script>
+            document.write(version)
+        </script>
+    </h3>
 
     <table>
         <tr>
-            <th style="background: #c4d4e5" colspan="2"><strong>Calling local methods from QuickStart.Core.dll</strong></th>
+            <th style="background: #c4d4e5" colspan="2">
+                <strong>
+                    Calling local methods from 
+                    <script>
+                        document.write(namespace)
+                    </script>
+                </strong>
+            </th>
         </tr>
         <tr>
-            <th>Method</th>
+            <th class="method">Method</th>
             <th>Result</th>
         </tr>
         <tr>
-            <td width="180px">GetAppDomainDirectory</td>
+            <td class="method">GetAppDomainDirectory</td>
             <td><pre id="GetAppDomainDirectory"></pre></td>
         </tr>
         <tr>
-            <td>GetCurrentTime</td>
+            <td class="method">GetCurrentTime</td>
             <td><pre id="GetCurrentTime"></pre></td>
         </tr>
         <tr>
-            <td>UseDynamicInput</td>
+            <td class="method">UseDynamicInput</td>
             <td><pre id="UseDynamicInput"></pre></td>
         </tr>
     </table>
     <br/>
     <table>
         <tr>
-            <th style="background: #c4d4e5" colspan="2"><strong>Calling external library methods using QuickStart.Core.dll wrapper</strong></th>
+            <th style="background: #c4d4e5" colspan="2">
+                <strong>
+                    Calling external library methods using
+                    <script>
+                        document.write(namespace)
+                    </script>
+                    wrapper
+                </strong>
+            </th>
         </tr>
         <tr>
-            <th>Method</th>
+            <th class="method">Method</th>
             <th>Result</th>
         </tr>
         <tr>
-            <td width="180px">GetPersonInfo</td>
+            <td class="method">GetPersonInfo</td>
             <td><pre id="GetPersonInfo"></pre></td>
         </tr>
-        <!--<tr>-->
-            <!--<td>GetCurrentTime</td>-->
-            <!--<td><div id="GetCurrentTime"></div></td>-->
-        <!--</tr>-->
-        <!--<tr>-->
-            <!--<td>UseDynamicInput</td>-->
-            <!--<td><div id="UseDynamicInput"></div></td>-->
-        <!--</tr>-->
     </table>
-
   </body>
 </html>

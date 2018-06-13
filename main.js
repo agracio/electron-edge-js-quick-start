@@ -1,6 +1,6 @@
 const electron = require('electron');
-const path = require('path');
-const url = require('url');
+
+var version = process.argv[1].replace('--', '');
 
 // Module to control application life.
 const app = electron.app;
@@ -14,14 +14,10 @@ let mainWindow;
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 1024, height: 768});
+  mainWindow = new BrowserWindow({width: 1052, height: 864});
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }));
+  mainWindow.loadURL(`file://${__dirname}/index.html?version=${version}`);
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()

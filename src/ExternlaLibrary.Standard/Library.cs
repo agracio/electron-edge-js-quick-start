@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ExternalLibrary
+namespace ExternlaLibrary.Standard
 {
     public class Person
     {

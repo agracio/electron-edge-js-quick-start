@@ -4,7 +4,9 @@
   "description": "A minimal Electron application using `electron-edge-js` with .NET Core",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron --core .",
+    "start:core": "electron --core .",
+    "start:standard": "electron --standard ."
   },
   "repository": "https://github.com/agracio/electron-edge-js-quick-start",
   "keywords": [
@@ -18,7 +20,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "electron": "1.8.4",
-    "electron-edge-js": "^8.3.2"
+    "electron": "2.0.2",
+    "electron-edge-js": "^8.3.6"
   }
 }

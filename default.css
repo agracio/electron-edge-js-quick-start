@@ -47,6 +47,17 @@ td {
     /*vertical-align: top;*/
     height: 20px;
     font-size:  0.9em;
+    min-width: 160px;
+}
+
+td.method{
+    max-width: 160px;
+    width: 160px;
+}
+
+th.method{
+    max-width: 160px;
+    width: 160px;
 }
 
 tbody>tr:hover{

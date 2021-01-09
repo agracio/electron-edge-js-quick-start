@@ -1,4 +1,4 @@
-Quick start for `electron-edge-js` https://github.com/agracio/electron-edge-js
+Quick start for `electron-edge-js`  https://github.com/agracio/electron-edge-js
 ================
 
 # electron-edge-js-quick-start

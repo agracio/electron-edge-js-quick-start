@@ -3,6 +3,7 @@
   <head>
         <script>
             var version = location.search.split('version=')[1];
+            var electronVersion = process.versions.electron;
             version = version.charAt(0).toUpperCase() + version.substr(1)
             var namespace = 'QuickStart.' + version + '.dll';
         </script>
@@ -17,7 +18,11 @@
     <h3 id="test">
         Quick start for electron-edge-js module using .NET 
         <script>
-            document.write(version)
+            document.write(version);
+        </script>
+        and Electron 
+        <script>
+            document.write(electronVersion);
         </script>
     </h3>
 

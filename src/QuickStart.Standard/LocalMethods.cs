@@ -21,5 +21,10 @@ namespace QuickStart.Standard
         {
             return $".NET Standard welcomes {input}";
         }
+
+        public async Task<object> ThrowException(dynamic input)
+        {
+            throw new Exception("Sample Exception");
+        }
     }
 }

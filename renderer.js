@@ -3,7 +3,7 @@ var version = location.search.split('version=')[1];
 var namespace = 'QuickStart.' + version.charAt(0).toUpperCase() + version.substr(1);
 if(version === 'core') version = 'coreapp';
 
-const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ version +'2.0');
+const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ version +'3.1');
 
 process.env.EDGE_USE_CORECLR = 1;
 if(version !== 'standard')
@@ -40,6 +40,12 @@ var getPerson = edge.func({
     methodName: 'GetPersonInfo'
 });
 
+var handleException = edge.func({
+    assemblyFile: baseDll,
+    typeName: localTypeName,
+    methodName: 'ThrowException'
+});
+
 
 window.onload = function() {
 
@@ -57,6 +63,13 @@ window.onload = function() {
         if (error) throw error;
         document.getElementById("UseDynamicInput").innerHTML = result;
     });
+    try{
+        handleException('', function(error, result) {
+        });
+
+    }catch(e){
+        document.getElementById("HandleException").innerHTML = e.Message;
+    }
 
     getPerson('', function(error, result) {
         //if (error) throw JSON.stringify(error);

@@ -1,12 +1,13 @@
 const path = require('path');
-var version = location.search.split('version=')[1];
-var namespace = 'QuickStart.' + version.charAt(0).toUpperCase() + version.substr(1);
-if(version === 'core') version = 'coreapp';
+var net = location.search.split('version=')[1];
+var namespace = 'QuickStart.' + net.charAt(0).toUpperCase() + net.substr(1);
+if(net === 'core') net = 'coreapp';
+var version = net == 'standard' ? '2.1' : '3.1'
 
-const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ version +'3.1');
+const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ net + version);
 
 process.env.EDGE_USE_CORECLR = 1;
-if(version !== 'standard')
+if(net !== 'standard')
     process.env.EDGE_APP_ROOT = baseNetAppPath;
 
 var edge = require('electron-edge-js');

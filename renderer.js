@@ -1,8 +1,8 @@
 const path = require('path');
 var net = location.search.split('version=')[1];
 var namespace = 'QuickStart.' + net.charAt(0).toUpperCase() + net.substr(1);
-if(net === 'core') net = 'coreapp';
-var version = net == 'standard' ? '2.1' : '3.1'
+if(net === 'core') net = '';
+var version = net == 'standard' ? '2.0' : '7.0'
 
 const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'+ net + version);
 

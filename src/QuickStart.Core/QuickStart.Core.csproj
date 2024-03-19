@@ -1,10 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
-  
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="2.8.2" />
@@ -18,6 +17,9 @@
   </ItemGroup>
   
   <ItemGroup>
+    <Reference Include="Edge.js.CSharp">
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp1.1\Edge.js.CSharp.dll</HintPath>
+    </Reference>
     <Reference Include="EdgeJs">
       <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp1.1\EdgeJs.dll</HintPath>
       <Private>true</Private>

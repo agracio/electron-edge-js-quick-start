@@ -19,7 +19,7 @@ namespace QuickStart.Core
         {
             return $".NET Core welcomes {input}";
         }
-
+        
         public async Task<object> ThrowException(dynamic input)
         {
             throw new Exception("Sample Exception");

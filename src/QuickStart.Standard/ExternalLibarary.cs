@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using ExternlaLibrary.Standard;
+using ExternalLibrary;
 using Newtonsoft.Json;
 
 namespace QuickStart.Standard

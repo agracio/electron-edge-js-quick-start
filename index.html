@@ -2,16 +2,15 @@
 <html>
   <head>
         <script>
-            var version = location.search.split('version=')[1];
-            var electronVersion = process.versions.electron;
+            const params = new URLSearchParams(document.location.search);
+            let version =  params.get('version');
+            const electron = params.get('electron');
             version = version.charAt(0).toUpperCase() + version.substr(1)
-            var namespace = 'QuickStart.' + version + '.dll';
+            const namespace = 'QuickStart.' + version + '.dll';
         </script>
     <meta charset="UTF-8">
     <title>electron-edge-js Quick Start</title>
-    <script>
-        require('./renderer.js')
-    </script>
+      <script src="renderer.js"></script>
       <link rel="stylesheet" href="default.css">
   </head>
   <body>
@@ -22,7 +21,7 @@
         </script>
         and Electron 
         <script>
-            document.write(electronVersion);
+            document.write(electron);
         </script>
     </h3>
 
@@ -43,19 +42,19 @@
         </tr>
         <tr>
             <td class="method">GetAppDomainDirectory</td>
-            <td><pre id="GetAppDomainDirectory"></pre></td>
+            <td><pre id="getAppDomainDirectory"></pre></td>
         </tr>
         <tr>
             <td class="method">GetCurrentTime</td>
-            <td><pre id="GetCurrentTime"></pre></td>
+            <td><pre id="getCurrentTime"></pre></td>
         </tr>
         <tr>
             <td class="method">Handle .NET Exception</td>
-            <td><pre id="HandleException"></pre></td>
+            <td><pre id="handleException"></pre></td>
         </tr>
         <tr>
             <td class="method">UseDynamicInput</td>
-            <td><pre id="UseDynamicInput"></pre></td>
+            <td><pre id="useDynamicInput"></pre></td>
         </tr>
     </table>
     <br/>
@@ -77,7 +76,7 @@
         </tr>
         <tr>
             <td class="method">GetPersonInfo</td>
-            <td><pre id="GetPersonInfo"></pre></td>
+            <td><pre id="getPerson"></pre></td>
         </tr>
     </table>
   </body>

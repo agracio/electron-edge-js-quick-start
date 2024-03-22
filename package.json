@@ -1,7 +1,7 @@
 {
   "name": "electron-edge-js-quick-start",
   "version": "1.0.0",
-  "description": "A minimal Electron application using `electron-edge-js` with .NET",
+  "description": "Minimal Electron application using `electron-edge-js` with .NET",
   "main": "main.js",
   "scripts": {
     "start": "electron --core .",

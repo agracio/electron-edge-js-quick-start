@@ -1,18 +1,17 @@
+/*jshint esversion: 6 */
 const {
     contextBridge,
     ipcRenderer
 } = require("electron");
 
-// Expose protected methods that allow the renderer process to use
-// the ipcRenderer without exposing the entire object
+
 contextBridge.exposeInMainWorld(
     "api", {
-        receive: (channel, func) => {
-            let validChannels = ["fromMain"];
-            if (validChannels.includes(channel)) {
-                ipcRenderer.on(channel, (event, ...args) => func(...args));
-            }
+        send: (channel, data) => {
+            ipcRenderer.send(channel, data);
         },
-        run: () => ipcRenderer.invoke("run")
+        receive: (channel, func) => {
+            ipcRenderer.on(channel, (event, ...args) => func(...args));
+        },
     }
 );

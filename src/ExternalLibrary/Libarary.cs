@@ -6,7 +6,7 @@ namespace ExternalLibrary
     {
         public Guid Id => Guid.NewGuid();
         public string Name => "John Smith";
-        public string Email => "john.smith@electron-quick-start.com";
+        public string Email => "john.smith@electron-edge-js-quick-start.com";
 
     }
 

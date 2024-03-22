@@ -14,6 +14,7 @@
       <link rel="stylesheet" href="default.css">
   </head>
   <body>
+    <script src="renderer.js"></script>
     <h3 id="test">
         Quick start for electron-edge-js module using .NET 
         <script>
@@ -24,6 +25,25 @@
             document.write(electron);
         </script>
     </h3>
+
+    <table>
+        <tr>
+            <th style="background: #c4d4e5" colspan="2">
+                <strong>
+                    Calling inline c# code
+                </strong>
+            </th>
+        </tr>
+        <tr>
+            <th class="method">Method</th>
+            <th>Result</th>
+        </tr>
+        <tr>
+            <td class="method">GetPersonInfo</td>
+            <td><pre id="getItem"></pre></td>
+        </tr>
+    </table>
+    <br/>
 
     <table>
         <tr>

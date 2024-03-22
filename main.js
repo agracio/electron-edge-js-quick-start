@@ -1,6 +1,6 @@
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS']=true
 const {app, BrowserWindow, ipcMain} = require("electron");
-const main = require('./app.js')
+const runner = require('./app.js')
 
 var version = process.argv[1].replace('--', '');
 
@@ -11,8 +11,8 @@ let mainWindow;
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 900,
+    width: 1024,
+    height: 750,
     webPreferences:{
       nodeIntegration: false,
       nodeIntegrationInWorker: false,
@@ -39,10 +39,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', ()=>{
-  createWindow();
-  main.run(mainWindow);
-})
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
@@ -57,14 +54,13 @@ app.on('activate', function () {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
   if (mainWindow === null) {
-    createWindow()
+    createWindow();
   }
 });
 
-
-// ipcMain.on("toMain", (event, args) => {
-//   mainWindow.webContents.send("fromMain", 'responseObj');
-// });
+ipcMain.on("run", (event, args) => {
+  runner.run(mainWindow);
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.

@@ -9,14 +9,16 @@ const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net'
 
 process.env.EDGE_USE_CORECLR = 1;
 if(net !== 'standard')
+{
     process.env.EDGE_APP_ROOT = baseNetAppPath;
+}
 
 var edge = require('electron-edge-js');
 
 var baseDll = path.join(baseNetAppPath, namespace + '.dll');
 
-var localTypeName = namespace + '.LocalMethods';
-var externalTypeName = namespace + '.ExternalMethods';
+var localTypeName = 'QuickStart.LocalMethods';
+var externalTypeName = 'QuickStart.ExternalMethods';
 
 var getAppDomainDirectory = edge.func({
     assemblyFile: baseDll,

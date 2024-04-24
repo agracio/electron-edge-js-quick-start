@@ -2,7 +2,7 @@
 using ExternalLibrary;
 using Newtonsoft.Json;
 
-namespace QuickStart.Core
+namespace QuickStart
 {
     class ExternalMethods
     {

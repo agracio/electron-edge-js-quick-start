@@ -5,22 +5,28 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="2.8.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="2.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Edge.js.CSharp">
-      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp3.1\Edge.js.CSharp.dll</HintPath>
-    </Reference>
     <Reference Include="EdgeJs">
-      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\netcoreapp3.1\EdgeJs.dll</HintPath>
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\net6.0\EdgeJs.dll</HintPath>
       <Private>true</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ExternalLibrary\ExternalLibrary.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\shared\ExternalLibarary.cs">
+      <Link>ExternalLibarary.cs</Link>
+    </Compile>
+    <Compile Include="..\shared\LocalMethods.cs">
+      <Link>LocalMethods.cs</Link>
+    </Compile>
+  </ItemGroup>
+
 </Project>

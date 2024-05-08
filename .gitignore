@@ -3,6 +3,5 @@ node_modules/
 .vs/
 bin/
 obj/
-package-lock.json
 /src/.idea/.idea.QuickStart/.idea/workspace.xml
 /src/.idea/.idea.QuickStart/.idea/contentModel.xml

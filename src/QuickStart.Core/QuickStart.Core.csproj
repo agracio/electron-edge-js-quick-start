@@ -7,20 +7,12 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.9.2" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="Microsoft.DotNet.InternalAbstractions" Version="1.0.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.0" />
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\ExternalLibrary\ExternalLibrary.csproj" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <Reference Include="EdgeJs">
-      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\net6.0\EdgeJs.dll</HintPath>
-      <Private>true</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\shared\ExternalLibarary.cs">
@@ -29,6 +21,11 @@
     <Compile Include="..\shared\LocalMethods.cs">
       <Link>LocalMethods.cs</Link>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="EdgeJs">
+      <HintPath>..\..\node_modules\electron-edge-js\lib\bootstrap\bin\Release\EdgeJs.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

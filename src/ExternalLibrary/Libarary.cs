@@ -4,17 +4,16 @@ namespace ExternalLibrary
 {
     public class Person
     {
-        public Guid Id => Guid.NewGuid();
-        public string Name => "John Smith";
-        public string Email => "john.smith@electron-edge-js-quick-start.com";
-
-    }
-
-    public class Library
-    {
-        public Person GetPerson()
+        public Person(string name, string email, int age)
         {
-            return new Person();
+            Id =  Guid.NewGuid();
+            Name = name;
+            Email = email;
+            Age = age;
         }
+        public Guid Id {get;}
+        public string Name {get;}
+        public string Email {get;}
+        public int Age {get;}
     }
 }

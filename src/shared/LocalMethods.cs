@@ -21,7 +21,7 @@ namespace QuickStart
 
         public async Task<object> UseDynamicInput(dynamic input)
         {
-            return $".NET Standard welcomes {input}";
+            return $".NET {input.framework} welcomes {input.node}";
         }
         public async Task<object> ThrowException(dynamic input)
         {

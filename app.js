@@ -1,7 +1,8 @@
 const { ipcMain} = require("electron");
 const path = require('path');
 var net = process.argv[1].replace('--', '');
-var namespace = 'QuickStart.' + net.charAt(0).toUpperCase() + net.substr(1);
+var framework = net.charAt(0).toUpperCase() + net.substr(1);
+var namespace = 'QuickStart.' + framework;
 if(net === 'core') net = '';
 var version = net === 'standard' ? '2.0' : '7.0'
 
@@ -50,30 +51,38 @@ var handleException = edge.func({
     methodName: 'ThrowException'
 });
 
-var getItem = edge.func({
+var getInlinePerson = edge.func({
     source: function () {/* 
         using System.Threading.Tasks;
+        using System;
 
-            public class Person
+        public class Person
+        {
+            public Person(string name, string email, int age)
             {
-                public string Name = "Peter Smith";
-                public string Email = "peter.smith@electron-edge-js-quick-start.com";
-                public int Age = 35;
+                Id =  Guid.NewGuid();
+                Name = name;
+                Email = email;
+                Age = age;
             }
+            public Guid Id {get;}
+            public string Name {get;set;}
+            public string Email {get;set;}
+            public int Age {get;set;}
+        }
 
-            public class Startup
+        public class Startup
+        {
+            public async Task<object> Invoke(dynamic input)
             {
-                public async Task<object> Invoke(dynamic input)
-                {
-                    Person person = new Person();
-                    return person;
-                }
-            }  
+                return new Person(input.name, input.email, input.age);
+            }
+        }
     */}
 });
 
 exports.run = function (window) {
-    getItem('', function(error, result) {
+    getInlinePerson({name: 'Peter Smith', email: 'peter.smith@electron-edge-js-quick-start.com', age: 30}, function(error, result) {
         if (error) throw error;
         window.webContents.send("fromMain", 'getItem', JSON.stringify( result, null, 2 ));
     });
@@ -86,7 +95,7 @@ exports.run = function (window) {
         window.webContents.send("fromMain", 'getCurrentTime', result);
     });
 
-    useDynamicInput('Node.Js', function(error, result) {
+    useDynamicInput({framework: framework, node: 'Node.Js'}, function(error, result) {
         if (error) throw error;
         window.webContents.send("fromMain", 'useDynamicInput', result);
     });
@@ -98,8 +107,8 @@ exports.run = function (window) {
         window.webContents.send("fromMain", 'handleException', e.Message);
     }
 
-    getPerson('', function(error, result) {
+    getPerson({name: 'John Smith', email: 'john.smith@electron-edge-js-quick-start.com', age: 35}, function(error, result) {
         if (error) throw error;
-        window.webContents.send("fromMain", 'getPerson', result);
+        window.webContents.send("fromMain", 'getPerson', JSON.stringify( result, null, 2 ));
     });
 }

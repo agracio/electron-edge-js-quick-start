@@ -5,7 +5,6 @@
   "main": "main.js",
   "scripts": {
     "start": "electron --core .",
-    "start:core": "electron --core .",
     "start:standard": "electron --standard ."
   },
   "repository": "https://github.com/agracio/electron-edge-js-quick-start",
@@ -20,7 +19,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "electron": "^30.0.1",
-    "electron-edge-js": "^30.0.1"
+    "electron": "^30.0.2",
+    "electron-edge-js": "^30.0.2"
   }
 }

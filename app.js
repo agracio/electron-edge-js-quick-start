@@ -4,7 +4,7 @@ var net = process.argv[1].replace('--', '');
 var framework = net.charAt(0).toUpperCase() + net.substr(1);
 var namespace = 'QuickStart.' + framework;
 if(net === 'core') net = '';
-var version = net === 'standard' ? '2.0' : '7.0'
+var version = net === 'standard' ? '2.0' : '8.0'
 
 const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net' + net + version);
 

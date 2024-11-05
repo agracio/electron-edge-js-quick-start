@@ -7,6 +7,7 @@ if(net === 'core') net = '';
 var version = net === 'standard' ? '2.0' : '8.0'
 
 const baseNetAppPath = path.join(__dirname, '/src/'+ namespace +'/bin/Debug/net' + net + version);
+//const baseNetAppPath = path.join(__dirname, '/src/QuickStart.Core/bin/Release/net8.0/win-x64/publish');
 
 process.env.EDGE_USE_CORECLR = 1;
 if(net !== 'standard')

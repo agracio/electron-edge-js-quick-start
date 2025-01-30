@@ -52,41 +52,50 @@ var handleException = edge.func({
     methodName: 'ThrowException'
 });
 
-var getInlinePerson = edge.func({
-    source: function () {/* 
-        using System.Threading.Tasks;
-        using System;
+if(net !== 'standard'){
+    var getInlinePerson = edge.func({
+        source: function () {/* 
+            using System.Threading.Tasks;
+            using System;
 
-        public class Person
-        {
-            public Person(string name, string email, int age)
+            public class Person
             {
-                Id =  Guid.NewGuid();
-                Name = name;
-                Email = email;
-                Age = age;
+                public Person(string name, string email, int age)
+                {
+                    Id =  Guid.NewGuid();
+                    Name = name;
+                    Email = email;
+                    Age = age;
+                }
+                public Guid Id {get;}
+                public string Name {get;set;}
+                public string Email {get;set;}
+                public int Age {get;set;}
             }
-            public Guid Id {get;}
-            public string Name {get;set;}
-            public string Email {get;set;}
-            public int Age {get;set;}
-        }
 
-        public class Startup
-        {
-            public async Task<object> Invoke(dynamic input)
+            public class Startup
             {
-                return new Person(input.name, input.email, input.age);
+                public async Task<object> Invoke(dynamic input)
+                {
+                    return new Person(input.name, input.email, input.age);
+                }
             }
-        }
-    */}
-});
+        */}
+    });
+}
 
 exports.run = function (window) {
-    getInlinePerson({name: 'Peter Smith', email: 'peter.smith@electron-edge-js-quick-start.com', age: 30}, function(error, result) {
-        if (error) throw error;
-        window.webContents.send("fromMain", 'getItem', JSON.stringify( result, null, 2 ));
-    });
+
+    if(net !== 'standard'){
+        getInlinePerson({name: 'Peter Smith', email: 'peter.smith@electron-edge-js-quick-start.com', age: 30}, function(error, result) {
+            if (error) throw error;
+            window.webContents.send("fromMain", 'getItem', JSON.stringify( result, null, 2 ));
+        });
+    }
+    else{
+        window.webContents.send("fromMain", 'getItem', 'Excluded from .NET STandard run');
+    }
+
     getAppDomainDirectory('', function(error, result) {
         if (error) throw error;
         window.webContents.send("fromMain", 'getAppDomainDirectory', result);
@@ -101,11 +110,16 @@ exports.run = function (window) {
         window.webContents.send("fromMain", 'useDynamicInput', result);
     });
 
-    try{
-        handleException('', function(error, result) { });
+    if(net !== 'standard'){
+        try{
+            handleException('', function(error, result) { });
 
-    }catch(e){
-        window.webContents.send("fromMain", 'handleException', e.Message);
+        }catch(e){
+            window.webContents.send("fromMain", 'handleException', e.Message);
+        }
+    }
+    else{
+        window.webContents.send("fromMain", 'handleException', 'Excluded from .NET STandard run');
     }
 
     getPerson({name: 'John Smith', email: 'john.smith@electron-edge-js-quick-start.com', age: 35}, function(error, result) {
